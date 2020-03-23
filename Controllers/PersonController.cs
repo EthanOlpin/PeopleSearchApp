@@ -4,31 +4,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Test.Models;
+using PeopleSearchApp.Models;
 
-namespace Test.Controllers
+namespace PeopleSearchApp.Controllers
 {
     [Route("Person")]
     [Produces("application/json")]
     public class PersonController : Controller
     {
+
         private readonly PersonContext context;
         public PersonController(PersonContext context)
         {
             this.context = context;
+            
         }
+
         [HttpGet]
         public List<Person> GetPersons()
         {
             string search = Request.Query["search"];
-            if(search is null)
+            if (search is null)
             {
                 return context.Persons.ToList();
             }
-            return context.Persons.Where(p => p.Name.Contains(search)).ToList();
+            return context.Persons.Where(p => p.FirstName.Contains(search) || p.FirstName.Contains(search)).ToList();
         }
-
-        
 
         [HttpPost]
         public IActionResult AddPerson([FromBody]Person person)

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace Test.Controllers
+namespace PeopleSearchApp.Controllers
 {
     [ApiController]
     [Route("[controller]")]

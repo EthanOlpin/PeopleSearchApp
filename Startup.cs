@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using PeopleSearchApp.DAL;
 
-namespace Test
+namespace PeopleSearchApp
 {
     public class Startup
     {
@@ -44,6 +44,8 @@ namespace Test
                 app.UseExceptionHandler("/Error");
             }
 
+            //Seed the database if empty
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -65,6 +67,7 @@ namespace Test
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
+            
         }
     }
 }
