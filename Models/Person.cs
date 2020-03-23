@@ -7,6 +7,7 @@ namespace Test.Models
 {
     public class Person
     {
+        public int PersonID { get; set; }
         public string Name { get; set; }
         public string ImageURL { get; set; }
         public DateTime Birthday { get; set; }

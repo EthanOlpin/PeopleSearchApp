@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PeopleSearchApp.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,17 +12,22 @@ namespace Test.Controllers
     [Produces("application/json")]
     public class PersonController : Controller
     {
-         public static List<Person> people = new List<Person> { new Person { Name = "dave", Birthday = new DateTime(2000, 6, 1, 0, 0, 0), ImageURL = "" } };
-         [HttpGet]
-         public List<Person> GetPersons()
+        private readonly PersonContext context;
+        public PersonController(PersonContext context)
         {
-            return people;
+            this.context = context;
+        }
+         [HttpGet]
+        public List<Person> GetPersons()
+        {
+            return context.Persons.ToList();
         }
 
         [HttpPost]
         public IActionResult AddPerson([FromBody]Person person)
         {
-            people.Add(person);
+            context.Persons.Add(person);
+            context.SaveChanges();
             return Ok(new
             { 
                 success = true,
