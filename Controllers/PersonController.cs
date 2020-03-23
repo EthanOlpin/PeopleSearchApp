@@ -17,7 +17,6 @@ namespace PeopleSearchApp.Controllers
         public PersonController(PersonContext context)
         {
             this.context = context;
-            
         }
 
         [HttpGet]
