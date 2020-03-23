@@ -17,11 +17,18 @@ namespace Test.Controllers
         {
             this.context = context;
         }
-         [HttpGet]
+        [HttpGet]
         public List<Person> GetPersons()
         {
-            return context.Persons.ToList();
+            string search = Request.Query["search"];
+            if(search is null)
+            {
+                return context.Persons.ToList();
+            }
+            return context.Persons.Where(p => p.Name.Contains(search)).ToList();
         }
+
+        
 
         [HttpPost]
         public IActionResult AddPerson([FromBody]Person person)
@@ -29,7 +36,7 @@ namespace Test.Controllers
             context.Persons.Add(person);
             context.SaveChanges();
             return Ok(new
-            { 
+            {
                 success = true,
                 returncode = "200"
             });
