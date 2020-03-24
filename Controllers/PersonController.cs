@@ -23,9 +23,12 @@ namespace PeopleSearchApp.Controllers
         public List<Person> GetPersons()
         {
             string search = Request.Query["search"];
-            if (search is null)
+
+            //We can etiher return all people when searching with an empty string or none of them
+            if (search is null || search == "")
             {
-                return context.Persons.ToList();
+                return new List<Person>();
+                //return context.Persons.ToList();
             }
             return context.Persons.Where(p => p.FirstName.Contains(search) || p.FirstName.Contains(search)).ToList();
         }
@@ -33,6 +36,9 @@ namespace PeopleSearchApp.Controllers
         [HttpPost]
         public IActionResult AddPerson([FromBody]Person person)
         {
+            if (person is null)
+                return null;
+
             context.Persons.Add(person);
             context.SaveChanges();
             return Ok(new

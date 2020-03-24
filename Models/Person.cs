@@ -12,6 +12,6 @@ namespace PeopleSearchApp.Models
         public string LastName { get; set; }
         public string ImageURL { get; set; }
         public DateTime Birthday { get; set; }
-
+        public string Interests { get; set; }
     }
 }

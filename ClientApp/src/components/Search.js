@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import moment, { max } from 'moment';
+import moment from 'moment';
 const Search = () => {
 
     const [search, setSearch] = useState("");
@@ -14,8 +14,8 @@ const Search = () => {
     return (
         <>
             <div className="form-inline">
-                <input type="text" onChange={e => setSearch(e.target.value)} className="form-control" style={{marginRight:"10px"}}/>
-            <button onClick={getPersons} className="btn btn-primary" style={{ display: "inline" }}>Search</button>
+                <input type="text" className="form-control" style={{ marginRight: "10px" }} placeholder="Search" onChange={e => setSearch(e.target.value)} />
+                <button className="btn btn-primary" style={{ display: "inline" }} onClick={getPersons}>Search</button>
             </div>
             <table className="table" style={{ verticalAlign: "middle", marginTop:"10px"}}>
                 <thead>

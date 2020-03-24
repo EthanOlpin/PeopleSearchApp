@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchApp", "PeopleSearchApp.csproj", "{EDE26E3E-4D12-4B4A-A416-FE429D153FE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PeopleSearchApp", "PeopleSearchApp.csproj", "{EDE26E3E-4D12-4B4A-A416-FE429D153FE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleSearchAppTests", "..\PeopleSearchAppTests\PeopleSearchAppTests.csproj", "{D9C99C80-B042-43C0-BFC3-832E9A91F8F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EDE26E3E-4D12-4B4A-A416-FE429D153FE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDE26E3E-4D12-4B4A-A416-FE429D153FE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDE26E3E-4D12-4B4A-A416-FE429D153FE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C99C80-B042-43C0-BFC3-832E9A91F8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C99C80-B042-43C0-BFC3-832E9A91F8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C99C80-B042-43C0-BFC3-832E9A91F8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C99C80-B042-43C0-BFC3-832E9A91F8F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
