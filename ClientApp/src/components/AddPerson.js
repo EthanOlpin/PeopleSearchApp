@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-
+import moment from 'moment'
 import './FormStyles.css'
 import Tag from './Tag'
 
@@ -30,6 +30,7 @@ const AddPerson = () => {
     const [imageURL, setImageURL] = useState("https://img.icons8.com/ios/100/000000/cat-profile.png")
     const [submitSuccess, setSubmitSuccess] = useState(null)
     const [interests, setInterests] = useState([]);
+    const [dateInvalid, setDateInvalid] = useState(false)
 
     const clearForm = () => {
         document.getElementById("add-person-form").reset()
@@ -39,9 +40,9 @@ const AddPerson = () => {
     const addPerson = async e => {
         e.preventDefault()
         const body = { firstName, lastName, birthday, imageURL, interests: interests.join(", ") }
-        const request = await fetch('person', { method: "POST", body: JSON.stringify(body), headers: { "content-type": "application/json" } })
-        const response = await request.json()
-        if (response.success) {
+        const response = await fetch('person', { method: "POST", body: JSON.stringify(body), headers: { "content-type": "application/json" } })
+
+        if (response.ok) {
             setSubmitSuccess(true)
             clearForm()
         }
@@ -60,10 +61,21 @@ const AddPerson = () => {
         }
     }
 
-    const removeInterest = i => {
-        let _interests = [...interests]
-        _interests.filter(item => item != i)
-        setInterests(_interests)
+    const removeInterest = label => {
+        const _interests = [...interests]
+        setInterests(_interests.filter(i => i !== label))
+    }
+
+    const validateDateRange = e => {
+        const now = moment()
+        const inputDate = moment(e.target.value)
+        if (inputDate.isBetween(moment('1900-01-01'), now)) {
+            e.target.style.boxShadow = "none"
+            setDateInvalid(false)
+        } else {
+            e.target.style.boxShadow = "#dc3545 0px 0px 1.5px 1px"
+            setDateInvalid(true)
+        }
     }
 
     return (
@@ -78,21 +90,33 @@ const AddPerson = () => {
                 <div className="form-group">
                     <input type="text" className="form-control" placeholder="Enter Last Name" onChange={e => setLastName(e.target.value)} required />
                 </div>
-                <div className="form-group">
+                <div class="form-group">
                     <label>Birthday</label>
-                    <input type="date" className="form-control" onChange={e => setBirthday(e.target.value)} required />
+                    <input type="date"
+                        className="form-control"
+                        onBlur={e => validateDateRange(e)}
+                        onChange={e => setBirthday(e.target.value)}
+                        placeholder="YYYY-MM-DD"
+                        required
+                    />
                 </div>
+                {
+                    dateInvalid &&
+                    <div style={{ color: '#dc3545', position: 'relative', bottom: '6px' }}>
+                        {`Date must be between ${'01-01-1900'} and current date.`}
+                    </div>
+                }
                 <div className="form-group">
                     <label>Profile Picture URL</label>
                     <input type="text" className="form-control" placeholder="Enter Image URL" onChange={e => setImageURL(e.target.value)} />
                 </div>
                 <div id="container" className="form-group">
-                    {interests.map(interest => <Tag label={interest} onClick={e => removeInterest(e.target.label)} />)}
+                    {interests.map(i => <Tag label={i} removeInterest={removeInterest} />)}
                 </div>
                 <div className="form-group">
                     <label>Interests</label>
                     <input type="text" className="form-control" placeholder="Enter Interests" onKeyUp={e => addInterest(e)} />
-                    <small className="form-text text-muted">Press ',' to finish an interest</small>
+                    <small className="form-text text-muted">Press ',' to finish an interest. Click interests to delete them.</small>
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>

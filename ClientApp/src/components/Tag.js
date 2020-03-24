@@ -1,9 +1,8 @@
 ﻿import React from 'react'
 import './TagStyles.css'
 
-const Tag = ({ label }) => {
-    return (
-        <span>{label}</span>)
+const Tag = ({ label, removeInterest }) => {
+    return <span onClick={() => removeInterest(label)}>{label}</span>
 }
 
 export default Tag
