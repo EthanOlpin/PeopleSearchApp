@@ -11,13 +11,13 @@ const SuccessMessage = ({ success }) => {
     }
     else if (success) {
         return (
-            <div class="alert alert-success" role="alert">
+            <div className="alert alert-success" role="alert">
                 Submitted successfully.
             </div>)
     }
     else {
         return (
-            <div class="alert alert-danger" role="alert">
+            <div className="alert alert-danger" role="alert">
                 Oops! Something went wrong.
             </div>)
     }
@@ -29,7 +29,8 @@ const AddPerson = () => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [birthday, setBirthday] = useState()
-    const [imageURL, setImageURL] = useState()
+    //Default profile icon set for users that don't add personal image url
+    const [imageURL, setImageURL] = useState("https://img.icons8.com/ios/100/000000/cat-profile.png")
     const [submitSuccess, setSubmitSuccess] = useState(null)
     const [interests, setInterests] = useState([]);
 
@@ -54,7 +55,7 @@ const AddPerson = () => {
 
     const addInterest = e => {
         e.preventDefault()
-        if (e.keyCode == 188) {
+        if (e.keyCode === 188) {
             let _interests = [...interests]
             _interests.push(e.target.value.slice(0, -1))
             setInterests(_interests)
@@ -66,33 +67,33 @@ const AddPerson = () => {
     return (
         <>
         <h1>Add a new person to the database</h1>
-            <form id="add-person-form" class="needs-validation" novalidate onSubmit={addPerson}>
+            <form id="add-person-form" className="needs-validation" noValidate onSubmit={addPerson}>
             <SuccessMessage success={submitSuccess} />
-            <div class="form-group">
+            <div className="form-group">
                 <label>Name</label>
-                <input type="text" class="form-control" placeholder="Enter First Name" onChange={e => setFirstName(e.target.value)} required/>
+                <input type="text" className="form-control" placeholder="Enter First Name" onChange={e => setFirstName(e.target.value)} required/>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Enter Last Name" onChange={e => setLastName(e.target.value)} required/>
+            <div className="form-group">
+                <input type="text" className="form-control" placeholder="Enter Last Name" onChange={e => setLastName(e.target.value)} required/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label>Birthday</label>
-                <input type="date" class="form-control"onChange={e => setBirthday(e.target.value)} required/>
+                <input type="date" className="form-control"onChange={e => setBirthday(e.target.value)} required/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <label>Profile Picture URL</label>
-                <input type="text" class="form-control" placeholder="Enter Image URL" onChange={e => setImageURL(e.target.value)}/>
+                <input type="text" className="form-control" placeholder="Enter Image URL" onChange={e => setImageURL(e.target.value)}/>
                 </div>
-                <div id="container" class="form-group">
+                <div id="container" className="form-group">
                     {interests.map(i => <Tag label={i} />)}
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label>Interests</label>
-                    <input type="text" class="form-control" placeholder="Enter Interests" onKeyUp={e => addInterest(e)} />
-                    <small class="form-text text-muted">Press ',' to finish an interest</small>
+                    <input type="text" className="form-control" placeholder="Enter Interests" onKeyUp={e => addInterest(e)} />
+                    <small className="form-text text-muted">Press ',' to finish an interest</small>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
             </form>
             </>
     )

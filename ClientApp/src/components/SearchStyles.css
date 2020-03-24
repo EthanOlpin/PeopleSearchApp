@@ -1,0 +1,32 @@
+﻿.table td {
+    vertical-align: middle;
+    max-width: 10rem;
+}
+.table th {
+    vertical-align: middle;
+}
+
+#container {
+    text-align: center;
+    align-content: center;
+}
+
+table {
+
+    vertical-align: middle;
+    margin-top: 10px;
+}
+
+img{
+    max-width: 100px;
+}
+
+input {
+    margin-right: 10px;
+}
+
+button {
+
+    display: inline;
+
+}

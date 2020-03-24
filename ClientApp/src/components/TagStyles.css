@@ -1,0 +1,8 @@
+﻿span {
+    background-color: #1b6ec2;
+    color: white;
+    border-radius: 3px;
+    padding: 0.3rem 0.75rem;
+    margin: 0.25rem 0.5rem 0.25rem 0rem;
+    display: inline
+}
