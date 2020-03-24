@@ -24,6 +24,7 @@ const Search = () => {
                         <th>Image</th>
                         <th>Name</th>
                         <th>Age</th>
+                        <th>Interests</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,7 @@ const Search = () => {
                         <td><img src={p.imageURL} style={{maxWidth:"100px"}}/></td>
                             <td>{`${p.firstName} ${p.lastName}`}</td>
                         <td>{moment().diff(moment(p.birthday), "year")}</td>
+                        <td>{p.interests}</td>
                     </tr>)}
                 </tbody>
             </table>

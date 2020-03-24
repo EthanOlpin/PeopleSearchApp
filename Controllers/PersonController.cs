@@ -30,7 +30,7 @@ namespace PeopleSearchApp.Controllers
                 return new List<Person>();
                 //return context.Persons.ToList();
             }
-            return context.Persons.Where(p => p.FirstName.Contains(search) || p.FirstName.Contains(search)).ToList();
+            return context.Persons.Where(p => p.FirstName.Contains(search) || p.LastName.Contains(search)).ToList();
         }
 
         [HttpPost]
