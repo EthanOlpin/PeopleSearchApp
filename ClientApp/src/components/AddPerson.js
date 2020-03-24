@@ -3,10 +3,9 @@
 import './FormStyles.css'
 import Tag from './Tag'
 
-
 const SuccessMessage = ({ success }) => {
     if (success === null) {
-        //No submissions have been made yet. 
+        //No submissions have been made yet.
         return null
     }
     else if (success) {
@@ -23,9 +22,7 @@ const SuccessMessage = ({ success }) => {
     }
 }
 
-
 const AddPerson = () => {
-
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [birthday, setBirthday] = useState()
@@ -61,41 +58,46 @@ const AddPerson = () => {
             setInterests(_interests)
             e.target.value = ""
         }
+    }
 
+    const removeInterest = i => {
+        let _interests = [...interests]
+        _interests.filter(item => item != i)
+        setInterests(_interests)
     }
 
     return (
         <>
-        <h1>Add a new person to the database</h1>
-            <form id="add-person-form" className="needs-validation" noValidate onSubmit={addPerson}>
-            <SuccessMessage success={submitSuccess} />
-            <div className="form-group">
-                <label>Name</label>
-                <input type="text" className="form-control" placeholder="Enter First Name" onChange={e => setFirstName(e.target.value)} required/>
-            </div>
-            <div className="form-group">
-                <input type="text" className="form-control" placeholder="Enter Last Name" onChange={e => setLastName(e.target.value)} required/>
-            </div>
-            <div className="form-group">
-                <label>Birthday</label>
-                <input type="date" className="form-control"onChange={e => setBirthday(e.target.value)} required/>
-            </div>
-            <div className="form-group">
-                <label>Profile Picture URL</label>
-                <input type="text" className="form-control" placeholder="Enter Image URL" onChange={e => setImageURL(e.target.value)}/>
+            <h1>Add a new person to the database</h1>
+            <form id="add-person-form" className="needs-validation" novalidate onSubmit={addPerson}>
+                <SuccessMessage success={submitSuccess} />
+                <div className="form-group">
+                    <label>Name</label>
+                    <input type="text" className="form-control" placeholder="Enter First Name" onChange={e => setFirstName(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <input type="text" className="form-control" placeholder="Enter Last Name" onChange={e => setLastName(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label>Birthday</label>
+                    <input type="date" className="form-control" onChange={e => setBirthday(e.target.value)} required />
+                </div>
+                <div className="form-group">
+                    <label>Profile Picture URL</label>
+                    <input type="text" className="form-control" placeholder="Enter Image URL" onChange={e => setImageURL(e.target.value)} />
                 </div>
                 <div id="container" className="form-group">
-                    {interests.map(i => <Tag label={i} />)}
+                    {interests.map(interest => <Tag label={interest} onClick={e => removeInterest(e.target.label)} />)}
                 </div>
                 <div className="form-group">
                     <label>Interests</label>
                     <input type="text" className="form-control" placeholder="Enter Interests" onKeyUp={e => addInterest(e)} />
                     <small className="form-text text-muted">Press ',' to finish an interest</small>
-            </div>
+                </div>
 
-            <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary">Submit</button>
             </form>
-            </>
+        </>
     )
 }
 

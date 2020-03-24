@@ -17,8 +17,9 @@ table {
     margin-top: 10px;
 }
 
-img{
-    max-width: 100px;
+img {
+    max-height: 75px;
+    max-width: 75px;
 }
 
 input {

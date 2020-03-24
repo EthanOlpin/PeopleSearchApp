@@ -3,15 +3,16 @@ import moment from 'moment';
 import BeatLoader from 'react-spinners/BeatLoader'
 import './SearchStyles.css'
 
+
 const Search = () => {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState();
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(null);
 
     const getPersons = async () => {
         setLoading(true)
         setSearchResult([])
-        const response = await fetch('person?search=' + search.trim())
+        const response = await fetch('person?search=' + search)
         const data = await response.json()
         setSearchResult(data)
         setLoading(false)
@@ -20,10 +21,9 @@ const Search = () => {
     return (
         <>
             <div className="form-inline">
-                <input type="text" className="form-control" placeholder="Search" onChange={e => setSearch(e.target.value)} />
+                <input type="text" className="form-control" placeholder="Begin typing to search" onChange={e => setSearch(e.target.value)} />
                 <button className="btn btn-primary" onClick={getPersons}>Search</button>
             </div>
-
             <table className="table">
                 <thead>
                     <tr>
@@ -44,6 +44,7 @@ const Search = () => {
                     </tr>)}
                 </tbody>
             </table>
+
             <div style={{ textAlign: "center" }}>
                 <BeatLoader
                     size={20}
