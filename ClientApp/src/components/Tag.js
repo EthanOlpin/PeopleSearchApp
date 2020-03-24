@@ -1,12 +1,9 @@
 ﻿import React from 'react'
-import './TagStyles.css' 
-
+import './TagStyles.css'
 
 const Tag = ({ label }) => {
-
     return (
         <span>{label}</span>)
-
 }
 
 export default Tag

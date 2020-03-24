@@ -12,8 +12,8 @@ namespace PeopleSearchApp.Controllers
     [Produces("application/json")]
     public class PersonController : Controller
     {
-
         private readonly PersonContext context;
+
         public PersonController(PersonContext context)
         {
             this.context = context;
@@ -47,6 +47,5 @@ namespace PeopleSearchApp.Controllers
                 returncode = "200"
             });
         }
-
     }
 }

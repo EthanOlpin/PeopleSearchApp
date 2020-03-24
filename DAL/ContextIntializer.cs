@@ -10,13 +10,12 @@ namespace PeopleSearchApp.DAL
 {
     public static class ContextIntializer
     {
-       public static void Seed(IApplicationBuilder applicationBuilder)
+        public static void Seed(IApplicationBuilder applicationBuilder)
         {
             PersonContext context = applicationBuilder.ApplicationServices.GetService<PersonContext>();
 
             if (!context.Persons.Any())
             {
-                
                 context.SaveChanges();
             }
         }
