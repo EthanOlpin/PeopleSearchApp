@@ -21,7 +21,7 @@ const Search = () => {
     return (
         <>
             <div className="form-inline">
-                <input type="text" className="form-control" placeholder="Begin typing to search" onChange={e => setSearch(e.target.value)} />
+                <input type="text" className="form-control" onChange={e => setSearch(e.target.value)} />
                 <button className="btn btn-primary" onClick={getPersons}>Search</button>
             </div>
             <table className="table">

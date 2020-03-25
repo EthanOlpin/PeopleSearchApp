@@ -21,6 +21,9 @@ namespace PeopleSearchApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //For demonstration purposes we use an in-memory DB.
+            //If a connectionn to a remote database is desired we can add
+            //needed authentication and a connection string to the options.
             services.AddDbContext<PersonContext>(opt => opt.UseInMemoryDatabase("Persons"));
 
             services.AddControllersWithViews();
@@ -44,8 +47,6 @@ namespace PeopleSearchApp
                 app.UseExceptionHandler("/Error");
             }
 
-            //Seed the database if empty
-
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
@@ -67,7 +68,6 @@ namespace PeopleSearchApp
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
-            
         }
     }
 }

@@ -26,8 +26,7 @@ const AddPerson = () => {
     const [firstName, setFirstName] = useState()
     const [lastName, setLastName] = useState()
     const [birthday, setBirthday] = useState()
-    //Default profile icon set for users that don't add personal image url
-    const [imageURL, setImageURL] = useState("https://img.icons8.com/ios/100/000000/cat-profile.png")
+    const [imageURL, setImageURL] = useState("")
     const [submitSuccess, setSubmitSuccess] = useState(null)
     const [interests, setInterests] = useState([]);
     const [dateInvalid, setDateInvalid] = useState(false)
@@ -116,7 +115,7 @@ const AddPerson = () => {
                 <div className="form-group">
                     <label>Interests</label>
                     <input type="text" className="form-control" placeholder="Enter Interests" onKeyUp={e => addInterest(e)} />
-                    <small className="form-text text-muted">Press ',' to finish an interest. Click interests to delete them.</small>
+                    <small className="form-text text-muted">Press ',' to finish an interest.<br/>Click interests to delete them.</small>
                 </div>
 
                 <button type="submit" className="btn btn-primary">Submit</button>
