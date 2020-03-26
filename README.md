@@ -8,7 +8,7 @@ A recent version of Node.js
 
 Visual Studio
 
-Once you have download the soltution you can see and run the app by simply opening the .sln file and allowing Visual Studio to install the needed dependencies upon building.
+Once you have download the solution, you can see and run the app by simply opening the .sln file and allowing Visual Studio to install the needed dependencies.
 
 
 # Demonstrations
