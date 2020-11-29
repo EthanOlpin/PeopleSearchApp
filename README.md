@@ -1,6 +1,6 @@
 # People Search App
 
-Thanks for taking the time to visit this project. This solution was created for Health Catalyst's technical assessment for applicant developers. This app allows users to submit and search for user profiles in a database using a WebAPI built on .NET Entity Framework and a UI comprised of React.js components. 
+This solution was created for Health Catalyst's technical assessment for applicant developers. This app allows users to submit and search for user profiles in a database using a WebAPI built on .NET Entity Framework and a UI comprised of React.js components. 
 
 To try the project for yourself you'll only need the following:
 
